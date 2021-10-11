@@ -5,55 +5,55 @@ import { useState } from 'react';
 export default function App() {
   const Users = [
     {
-      employeeId: '01',
+      Id: '01',
       firstName: 'Sherwin',
       lastName: 'Kubek',
       email: 'sherwin@gmail.com',
     },
     {
-      employeeId: '02',
+      Id: '02',
       firstName: 'Sarvan',
       lastName: 'Musk',
       email: 'sherwin@gmail.com',
     },
     {
-      employeeId: '03',
+      Id: '03',
       firstName: 'Khafka',
       lastName: 'Bella',
       email: 'bella@gmail.com',
     },
     {
-      employeeId: '14',
+      Id: '14',
       firstName: 'Sarah',
       lastName: 'Taylor',
       email: 'sarah@gmail.com',
     },
     {
-      employeeId: '05',
+      Id: '05',
       firstName: 'Ellepsy',
       lastName: 'Perry',
       email: 'perryelle@gmail.com',
     },
     {
-      employeeId: '06',
+      Id: '06',
       firstName: 'Amella',
       lastName: 'Jones',
       email: 'jones@gmail.com',
     },
     {
-      employeeId: '07',
+     Id: '07',
       firstName: 'Sophie',
       lastName: 'Devine',
       email: 'devine@gmail.com',
     },
     {
-      employeeId: '08',
+      Id: '08',
       firstName: 'Niki',
       lastName: 'Gates',
       email: 'niki@gmail.com',
     },
     {
-      employeeId: '09',
+      Id: '09',
       firstName: 'Sam',
       lastName: 'Daniels',
       email: 'samdanel@gmail.com',
@@ -62,12 +62,12 @@ export default function App() {
 
   const [click, setClick] = useState(false);
 
-  const handleClick = (employeeId) => {
+  const handleClick = (Id) => {
     setClick(true);
   };
 
-  const Name = (employeeId) => {
-    return Users.find((data) => data.employeeId === employeeId);
+  const Name = (Id) => {
+    return Users.find((data) => data.Id === Id);
   };
 
   return (
