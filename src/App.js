@@ -60,28 +60,38 @@ export default function App() {
     },
   ];
 
-  const [click, setClick] = useState(false);
+  const [click, setClick] = useState(" ");
 
-  const handleClick = (Id) => {
-    setClick(true);
-  };
+  // const onChange = (Id) => {
+  //   setClick(true);
+  // };
 
-  const Name = (Id) => {
-    return Users.find((data) => data.Id === Id);
-  };
+  // const Name = (Id) => {
+  //   return Users.find((data) => data.Id === Id);
+  // };
+ 
+
 
   return (
     <div>
       <div>
-        <select size="5">
-          {Users.map((data) => {
-            return (
-              <option onClick={() => handleClick(data.Users)}>
-                {data.firstName + ' ' + data.lastName}
-              </option>
-            );
-          })}
+      <label required>Selector label</label>
+        <select className="custom-select" id="selected" 
+         onChange = {(e) =>{
+   const selectedItem = e.target.value;
+   setClick(selectedItem);
+ }}>
+
+<option value ="search" default selected>Search...</option>
+<option value="Sherwin">Sherwin</option>
+<option value="Sarvan">Sarvan</option>
+<option value="Khafka">Khafka</option>
+<option value="Sarah">Sarah</option>
+<option value="Ellepsy">Ellepsy</option>
+<option value="Amella">Amella</option>
+       
         </select>
+        {click}
       </div>
       <div></div>
     </div>
