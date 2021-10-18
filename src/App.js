@@ -15,7 +15,7 @@ this.state={
 }
 valid(){
     if(!this.state.name.includes("@") && this.state.password.length<5){
-        this.setState({nameError:"Invalid Name", passwordError:"Pass Should be more than 5 Character"})
+        this.setState({nameError:"Invalid Name", passwordError:"Character  Should be < 5"})
     }
    else if(!this.state.name.includes("@")){
         this.setState({nameError:"Invalid Name"})
