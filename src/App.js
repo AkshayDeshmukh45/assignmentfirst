@@ -1,99 +1,52 @@
-import './style.css';
 import React from 'react';
-import { useState } from 'react';
+import {Component} from 'react';
+import './style.css'
 
-export default function App() {
-  const Users = [
-    {
-      Id: '01',
-      firstName: 'Sherwin',
-      lastName: 'Kubek',
-      email: 'sherwin@gmail.com',
-    },
-    {
-      Id: '02',
-      firstName: 'Sarvan',
-      lastName: 'Musk',
-      email: 'sherwin@gmail.com',
-    },
-    {
-      Id: '03',
-      firstName: 'Khafka',
-      lastName: 'Bella',
-      email: 'bella@gmail.com',
-    },
-    {
-      Id: '14',
-      firstName: 'Sarah',
-      lastName: 'Taylor',
-      email: 'sarah@gmail.com',
-    },
-    {
-      Id: '05',
-      firstName: 'Ellepsy',
-      lastName: 'Perry',
-      email: 'perryelle@gmail.com',
-    },
-    {
-      Id: '06',
-      firstName: 'Amella',
-      lastName: 'Jones',
-      email: 'jones@gmail.com',
-    },
-    {
-     Id: '07',
-      firstName: 'Sophie',
-      lastName: 'Devine',
-      email: 'devine@gmail.com',
-    },
-    {
-      Id: '08',
-      firstName: 'Niki',
-      lastName: 'Gates',
-      email: 'niki@gmail.com',
-    },
-    {
-      Id: '09',
-      firstName: 'Sam',
-      lastName: 'Daniels',
-      email: 'samdanel@gmail.com',
-    },
-  ];
-
-  const [click, setClick] = useState(" ");
-
-  // const onChange = (Id) => {
-  //   setClick(true);
-  // };
-
-  // const Name = (Id) => {
-  //   return Users.find((data) => data.Id === Id);
-  // };
- 
-
-
-  return (
-    <div>
-      <div>
-      <label required>Selector label</label>
-        <select className="custom-select" id="selected" 
-         onChange = {(e) =>{
-   const selectedItem = e.target.value;
-   setClick(selectedItem);
- }}>
-
-<option value ="search" default selected>Search...</option>
-<option value="Sherwin">Sherwin</option>
-<option value="Sarvan">Sarvan</option>
-<option value="Khafka">Khafka</option>
-<option value="Sarah">Sarah</option>
-<option value="Ellepsy">Ellepsy</option>
-<option value="Amella">Amella</option>
-       
-        </select>
-        {click}
-      </div>
-      <div></div>
-    </div>
-  );
+class App extends Component{
+constructor()
+{
+    super();
+this.state={
+    name: " ",
+    password: " ",
+    nameError: "",
+    passwordError: ""
 }
+}
+valid(){
+    if(!this.state.name.includes("@") && this.state.password.length<5){
+        this.setState({nameError:"Invalid Name", passwordError:"Pass Should be more than 5 Character"})
+    }
+   else if(!this.state.name.includes("@")){
+        this.setState({nameError:"Invalid Name"})
+    }
+    else if(this.state.password.length<5){
+        this.setState({ passwordError:" Character  Should be < 5"})
+    }
+    else{
+        return true;
+    }
+};
+
+submit(){
+    if(this.valid()){
+        this.setState({nameError:" ", passwordError:""})
+        alert("Form has been Successfuly Submitted");
+    } 
+}
+
+render(){
+return (
+    <div className="validate-form">
+    <h1>Validate Form</h1>
+    <input className="input-name" type= 'text' onChange={(event)=>{this.setState({name:event.target.value})}} />
+    <p className="para">{this.state.nameError}</p>
+    <input className="input-pass" type= 'password' onChange={(event)=>{this.setState({password:event.target.value})}} />
+    <p className="para1">{this.state.passwordError}</p>
+    <button onClick={()=>this.submit()}>Submit</button>
+    </div>
+
+)
+}
+ }
+export default App;
